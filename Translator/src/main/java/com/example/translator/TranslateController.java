@@ -1,12 +1,12 @@
 
-package com.example.translator.controller;
+package com.example.translator;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 
 
-public class TranslateDashBoardController implements Initializable {
+public class TranslateController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
