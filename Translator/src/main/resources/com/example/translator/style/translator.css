@@ -1,17 +1,27 @@
 .background{
-    background-color: #ffcccc
+    -fx-background-color: #ffcccc
     
 }
 .btn{
-    -fx-border-radius:10px; 
-    -fx-border-radius: #ccccff;
-    -fx-border-radius: #cccccc;
+     -fx-background-radius:10px; 
+     -fx-background-color: #ccccff;
+    -fx-border-color: #cccccc;
     -fx-border-radius: 10px;
-    
+    -fx-border-width: 2px;
+}
+.btn:hover{
+    -fx-background-color: #99ff99;
 }
 .textFields{
-     -fx-border-radius:10px; 
-    -fx-border-radius: #ccccff;
-    -fx-border-radius: #cccccc;
+     -fx-background-radius:10px; 
+     -fx-background-color: #ffcccc;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 20px;
+}
+.comboBox{
+       -fx-background-radius:10px; 
+     -fx-background-color: #ccccff;
+    -fx-border-color: #cccccc;
     -fx-border-radius: 10px;
+    -fx-border-width: 2px;
 }

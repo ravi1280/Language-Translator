@@ -1,41 +1,17 @@
 
-package com.example.translator;
-
-
-import java.util.ResourceBundle;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextArea;
-import javafx.scene.input.MouseEvent;
+package testing001;
 import java.net.HttpURLConnection;
-import java.nio.charset.StandardCharsets;
 import java.net.URL;
-import java.net.URLEncoder;
 import java.util.Scanner;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
+public class Testing001 {
 
-public class TranslateController implements Initializable {
-
-    @FXML
-    private ComboBox<String> comboBox;
-    @FXML
-    private TextArea typeText;
-    @FXML
-    private Button translateBtn;
-    @FXML
-    private TextArea outputText;
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-
-    @FXML
-    private void translateClick(MouseEvent event) {
-        
-      try {
+    public static void main(String[] args) {
+  try {
             String text = "Hello, how are you?"; // Text to translate
             String langPair = "en|fr"; // English to French
 
@@ -56,12 +32,12 @@ public class TranslateController implements Initializable {
                 String response = scanner.useDelimiter("\\A").next();
                 scanner.close();
 
-//                // ✅ Parse JSON response
-//                JsonObject jsonResponse = JsonParser.parseString(response).getAsJsonObject();
-//                String translatedText = jsonResponse.getAsJsonObject("responseData").get("translatedText").getAsString();
+                // ✅ Parse JSON response
+                JsonObject jsonResponse = JsonParser.parseString(response).getAsJsonObject();
+                String translatedText = jsonResponse.getAsJsonObject("responseData").get("translatedText").getAsString();
 
                 // ✅ Print only translated text
-                System.out.println("Translated Text: " + response);
+                System.out.println("Translated Text: " + translatedText);
             } else {
                 System.out.println("Error: HTTP " + conn.getResponseCode());
             }
