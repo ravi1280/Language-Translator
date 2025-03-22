@@ -1,39 +1,27 @@
 .background{
-    -fx-background-color: #ffe6e6;
-    
-   
-    
+    -fx-background-color: linear-gradient(to bottom, #4E65FF , #92EFFD);
 }
 .btn{
-     -fx-background-radius:5px; 
-     -fx-background-color: #ccccff;
+    -fx-background-radius:5px;
+    -fx-background-color: #667EEA;
     -fx-border-color: #cccccc;
     -fx-border-radius: 5px;
     -fx-border-width: 2px;
-     -fx-effect : dropshadow(three-pass-box,rgba(0,0,0,0.1) , 10.0 , 0.0 , 0.0 , 10.0)
+    -fx-effect : dropshadow(three-pass-box,rgba(0,0,0,0.1) , 10.0 , 0.0 , 0.0 , 10.0)
 
 }
 .btn:hover{
-/*    -fx-background-color: #99ff99;*/
     -fx-background-color: #9886ff;
     -fx-cursor: hand;
 }
 .textFields{
-/*     -fx-background-radius:18px; 
-     -fx-background-color: #ffcccc;
     -fx-border-color: #cccccc;
-    -fx-border-radius: 18px;*/
-
-   -fx-border-color: #cccccc;
-   -fx-border-width: 2px;
+    -fx-border-width: 2px;
 
 }
 .comboBox{
-       -fx-background-radius:5px; 
-     -fx-background-color: #ccccff;
-    -fx-border-color: #cccccc;
-    -fx-border-radius: 5px;
-    -fx-border-width: 2px;
-     -fx-effect : dropshadow(three-pass-box,rgba(0,0,0,0.1) , 10.0 , 0.0 , 0.0 , 10.0)
- 
+    -fx-background-radius:5px;
+    -fx-background-color: #ffffff;
+    -fx-effect : dropshadow(three-pass-box,rgba(0,0,0,0.1) , 10.0 , 0.0 , 0.0 , 10.0)
+
 }

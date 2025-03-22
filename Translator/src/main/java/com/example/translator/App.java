@@ -5,12 +5,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 import java.io.IOException;
+import javafx.stage.StageStyle;
 
-/**
- * JavaFX App
- */
 public class App extends Application {
 
     private static Scene scene;
@@ -18,6 +15,9 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("translate"), 640, 480);
+    stage.setTitle("Language Translator");
+    stage.setResizable(false); // Disable maximize button
+    stage.initStyle(StageStyle.UTILITY);
         stage.setScene(scene);
         stage.show();
     }
