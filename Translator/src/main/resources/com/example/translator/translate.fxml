@@ -27,21 +27,32 @@
                   <Insets bottom="20.0" top="20.0" />
                </VBox.margin>
             </VBox>
+            <HBox alignment="CENTER">
+               <children>
+                  <Label text="Select Language">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
             <HBox>
                <children>
-                  <Label alignment="CENTER" prefHeight="26.0" prefWidth="102.0" text="Select Language ">
+                  <ComboBox fx:id="comboBox01" onAction="#comboBox1Action" prefWidth="200.0" promptText="Select ..." styleClass="comboBox" stylesheets="@style/translator.css" />
+                  <Pane HBox.hgrow="ALWAYS" />
+                  <Label prefHeight="30.0" text="To">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Pane prefWidth="25.0" />
-                  <ComboBox fx:id="comboBox" prefWidth="200.0" styleClass="comboBox" stylesheets="@style/translator.css" />
+                  <Pane HBox.hgrow="ALWAYS" />
+                  <ComboBox fx:id="comboBox02" onAction="#comboBox2Action" prefWidth="200.0" promptText="Select ..." styleClass="comboBox" stylesheets="@style/translator.css" />
                </children>
                <VBox.margin>
-                  <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                  <Insets bottom="10.0" left="50.0" right="50.0" top="10.0" />
                </VBox.margin>
             </HBox>
-            <TextArea fx:id="typeText" prefHeight="72.0" prefWidth="560.0" styleClass="textFields" stylesheets="@style/translator.css">
+            <TextArea fx:id="typeText" prefHeight="75.0" styleClass="textFields" stylesheets="@style/translator.css">
                <VBox.margin>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </VBox.margin>
@@ -49,16 +60,19 @@
                   <Font name="Arial Rounded MT Bold" size="12.0" />
                </font>
             </TextArea>
-            <VBox alignment="CENTER">
+            <VBox alignment="CENTER_RIGHT">
                <children>
                   <Button fx:id="translateBtn" mnemonicParsing="false" onMouseClicked="#translateClick" styleClass="btn" stylesheets="@style/translator.css" text="Translate">
                      <font>
-                        <Font name="Arial Rounded MT Bold" size="15.0" />
+                        <Font name="Arial Rounded MT Bold" size="12.0" />
                      </font>
                   </Button>
                </children>
+               <VBox.margin>
+                  <Insets left="20.0" right="20.0" />
+               </VBox.margin>
             </VBox>
-            <TextArea fx:id="outputText" prefHeight="102.0" prefWidth="600.0" styleClass="textFields" stylesheets="@style/translator.css">
+            <TextArea fx:id="outputText" prefHeight="75.0" styleClass="textFields" stylesheets="@style/translator.css">
                <VBox.margin>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </VBox.margin>

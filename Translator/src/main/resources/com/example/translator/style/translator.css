@@ -3,10 +3,10 @@
     
 }
 .btn{
-     -fx-background-radius:10px; 
+     -fx-background-radius:5px; 
      -fx-background-color: #ccccff;
     -fx-border-color: #cccccc;
-    -fx-border-radius: 10px;
+    -fx-border-radius: 5px;
     -fx-border-width: 2px;
 }
 .btn:hover{
@@ -19,9 +19,9 @@
     -fx-border-radius: 20px;
 }
 .comboBox{
-       -fx-background-radius:10px; 
+       -fx-background-radius:5px; 
      -fx-background-color: #ccccff;
     -fx-border-color: #cccccc;
-    -fx-border-radius: 10px;
+    -fx-border-radius: 5px;
     -fx-border-width: 2px;
 }
