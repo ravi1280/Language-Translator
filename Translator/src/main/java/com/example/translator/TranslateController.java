@@ -35,40 +35,38 @@ public class TranslateController implements Initializable {
     private ComboBox<String> comboBox02;
     
     private final List<String> languages = Arrays.asList(
-        "English - en", "French - fr", "Spanish - es", "German - de", "Italian - it", "Chinese - zh", 
-        "Japanese - ja", "Korean - ko", "Russian - ru", "Hindi - hi", "Arabic - ar","Sinhala - si"
+            "English - en", "French - fr", "Spanish - es", "German - de", "Italian - it", "Chinese - zh",
+            "Japanese - ja", "Korean - ko", "Russian - ru", "Hindi - hi", "Arabic - ar", "Sinhala - si"
     );
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
         comboBox01.getItems().addAll(languages);
         comboBox02.getItems().addAll(languages);
 
-        comboBox01.setValue("English - en"); 
-        comboBox02.setValue("French - fr"); 
-      
-    }    
+        comboBox01.setValue("English - en");
+        comboBox02.setValue("French - fr");
+
+    }
 
     @FXML
     private void translateClick(MouseEvent event) {
-        
-      try {
-          
-          String text = typeText.getText(); 
 
-          String fromLang = comboBox01.getValue().split(" - ")[1];
-          String toLang = comboBox02.getValue().split(" - ")[1];   
-          String langPair = fromLang + "|" + toLang;
-            
+        try {
+
+            String text = typeText.getText();
+
+            String fromLang = comboBox01.getValue().split(" - ")[1];
+            String toLang = comboBox02.getValue().split(" - ")[1];
+            String langPair = fromLang + "|" + toLang;
+
             if (fromLang == null || toLang == null) {
-            outputText.setText("Error: Invalid language selection.");
-            return;
-        }
+                outputText.setText("Error: Invalid language selection.");
+                return;
+            }
 
-//            String encodedText = URLEncoder.encode(text, StandardCharsets.UTF_8);
             String encodedText = URLEncoder.encode(text, "UTF-8");
-
             String encodedLangPair = URLEncoder.encode(langPair, StandardCharsets.UTF_8);
 
             String apiUrl = "https://api.mymemory.translated.net/get?q=" + encodedText + "&langpair=" + encodedLangPair;
@@ -81,14 +79,14 @@ public class TranslateController implements Initializable {
                 Scanner scanner = new Scanner(conn.getInputStream());
                 String response = scanner.useDelimiter("\\A").next();
                 scanner.close();
-                
-                   System.out.println("Translated Text: " + response);
+
+                System.out.println("Translated Text: " + response);
 
                 JsonObject jsonResponse = JsonParser.parseString(new String(response.getBytes(), StandardCharsets.UTF_8)).getAsJsonObject();
-String translatedText = jsonResponse.getAsJsonObject("responseData").get("translatedText").getAsString();
+                String translatedText = jsonResponse.getAsJsonObject("responseData").get("translatedText").getAsString();
 
-                 outputText.setText(translatedText);
-                 
+                outputText.setText(translatedText);
+
             } else {
                 System.out.println("Error: HTTP " + conn.getResponseCode());
             }
@@ -104,5 +102,5 @@ String translatedText = jsonResponse.getAsJsonObject("responseData").get("transl
     @FXML
     private void comboBox2Action(ActionEvent event) {
     }
-    
+
 }
