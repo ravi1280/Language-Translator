@@ -1,0 +1,17 @@
+.background{
+    background-color: #ffcccc
+    
+}
+.btn{
+    -fx-border-radius:10px; 
+    -fx-border-radius: #ccccff;
+    -fx-border-radius: #cccccc;
+    -fx-border-radius: 10px;
+    
+}
+.textFields{
+     -fx-border-radius:10px; 
+    -fx-border-radius: #ccccff;
+    -fx-border-radius: #cccccc;
+    -fx-border-radius: 10px;
+}
