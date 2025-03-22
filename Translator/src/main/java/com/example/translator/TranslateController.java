@@ -17,6 +17,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import javafx.event.ActionEvent;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 
 public class TranslateController implements Initializable {
@@ -32,7 +34,6 @@ public class TranslateController implements Initializable {
     @FXML
     private ComboBox<String> comboBox02;
     
-       // List of languages (Name - Code)
     private final List<String> languages = Arrays.asList(
         "English - en", "French - fr", "Spanish - es", "German - de", "Italian - it", "Chinese - zh", 
         "Japanese - ja", "Korean - ko", "Russian - ru", "Hindi - hi", "Arabic - ar","Sinhala - si"
@@ -43,11 +44,10 @@ public class TranslateController implements Initializable {
         
         comboBox01.getItems().addAll(languages);
         comboBox02.getItems().addAll(languages);
-        
-        // Set default values
+
         comboBox01.setValue("English - en"); 
         comboBox02.setValue("French - fr"); 
-        // TODO
+      
     }    
 
     @FXML
@@ -55,11 +55,10 @@ public class TranslateController implements Initializable {
         
       try {
           
-          String text = typeText.getText(); // Get text from input field
+          String text = typeText.getText(); 
 
-            // Get selected language codes
-          String fromLang = comboBox01.getValue().split(" - ")[1]; // Extract language code
-          String toLang = comboBox02.getValue().split(" - ")[1];   // Extract language code
+          String fromLang = comboBox01.getValue().split(" - ")[1];
+          String toLang = comboBox02.getValue().split(" - ")[1];   
           String langPair = fromLang + "|" + toLang;
             
             if (fromLang == null || toLang == null) {
@@ -67,30 +66,29 @@ public class TranslateController implements Initializable {
             return;
         }
 
-            // ✅ Encode text and language pair
-            String encodedText = URLEncoder.encode(text, StandardCharsets.UTF_8);
+//            String encodedText = URLEncoder.encode(text, StandardCharsets.UTF_8);
+            String encodedText = URLEncoder.encode(text, "UTF-8");
+
             String encodedLangPair = URLEncoder.encode(langPair, StandardCharsets.UTF_8);
 
-            // ✅ Correct API URL with encoded parameters
             String apiUrl = "https://api.mymemory.translated.net/get?q=" + encodedText + "&langpair=" + encodedLangPair;
 
             URL url = new URL(apiUrl);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
 
-            // ✅ Check if the request was successful
             if (conn.getResponseCode() == HttpURLConnection.HTTP_OK) {
                 Scanner scanner = new Scanner(conn.getInputStream());
                 String response = scanner.useDelimiter("\\A").next();
                 scanner.close();
+                
+                   System.out.println("Translated Text: " + response);
 
-//                // ✅ Parse JSON response
-//                JsonObject jsonResponse = JsonParser.parseString(response).getAsJsonObject();
-//                String translatedText = jsonResponse.getAsJsonObject("responseData").get("translatedText").getAsString();
+                JsonObject jsonResponse = JsonParser.parseString(new String(response.getBytes(), StandardCharsets.UTF_8)).getAsJsonObject();
+String translatedText = jsonResponse.getAsJsonObject("responseData").get("translatedText").getAsString();
 
-                // ✅ Print only translated text
-                System.out.println("Translated Text: " + response);
-                 outputText.setText("Error: "+response);
+                 outputText.setText(translatedText);
+                 
             } else {
                 System.out.println("Error: HTTP " + conn.getResponseCode());
             }
