@@ -24,5 +24,5 @@ A Java-based application designed to facilitate seamless translation between mul
 
 ---
 
-## 📁 Project Structure
+
 
